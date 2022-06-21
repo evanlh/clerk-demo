@@ -1,10 +1,32 @@
 ;; # Hello, Clerk 👋
-^{:nextjournal.clerk/visibility #{:hide-ns}}
-(ns introduction
+(ns ^:nextjournal.clerk/no-cache introduction
   (:require [nextjournal.clerk :as clerk]
             [meta-csv.core :as csv])
   (:import (java.net.http HttpRequest HttpClient HttpResponse$BodyHandlers)
            (java.net URI)))
+
+
+;; testing atoms
+
+(def a (atom false))
+[(.hashCode (var a)), (.hashCode a), (.hashCode @a)]
+a
+@a
+(reset! a {:key "value"})
+[(.hashCode (var a)), (.hashCode a), (.hashCode @a)]
+a
+@a
+
+
+;; (defn node [in out] {:in (apply conj #{} in) :out (apply conj #{} out)})
+;; (def a (node [] []))
+;; (def b (node [] []))
+;; (defn add-edge [from to]
+;;   (conj))
+;; (def b (assoc b :edges #{a}))
+;; a
+;; b
+
 
 ;; Clerk enables a *rich*, local-first notebook experience using
 ;; standard Clojure namespaces and Markdown files with Clojure code
